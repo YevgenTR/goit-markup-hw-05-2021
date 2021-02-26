@@ -256,6 +256,7 @@ a {
   background-color: var(--select-color);
   border-radius: 4px;
   padding: 10px 32px;
+  border: none;
 }
 
 .backdrop {
@@ -265,19 +266,50 @@ a {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   min-width: 528px;
   min-height: 581px;
   background-color: var(--white-text-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-button {
+  object-position: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 8px;
+  outline: none;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--white-text-color);
+}
+
+.modal-close-button:hover {
+  border-color: var(--select-color);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* fill: var(--select-color); */
 }
 
 /* Наши принципы */
@@ -286,7 +318,7 @@ a {
 .hero-link:focus {
   border: none;
   outline: none;
-  box-shadow: 0 0 0 2px var(--white-text-color);
+  /* box-shadow: 0 0 0 2px var(--white-text-color); */
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
